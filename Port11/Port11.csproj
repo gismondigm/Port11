@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
     <PackageReference Include="RestSharp" Version="106.6.7" />
   </ItemGroup>
 
@@ -15,11 +16,12 @@
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework">
-      <HintPath>..\..\..\..\Users\Admin\.nuget\packages\mstest.testframework\1.4.0\lib\netstandard1.0\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
+      <HintPath>..\..\..\..\Users\gismondigm\.nuget\packages\mstest.testframework\1.4.0\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions">
-      <HintPath>..\..\..\..\Users\Admin\.nuget\packages\mstest.testframework\1.4.0\lib\netstandard1.0\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
+      <HintPath>..\..\..\..\Users\gismondigm\.nuget\packages\mstest.testframework\1.4.0\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.Extensions" />
   </ItemGroup>
 
 </Project>

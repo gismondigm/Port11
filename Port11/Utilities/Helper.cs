@@ -33,10 +33,6 @@ namespace Port11.Utilities
         {
             return int.TryParse(s, out _);
         }
-        public static void ThinkBetweenCalls()
-        {
-            Wait(GetRandomNumber(3, 8));
-        }
         public static void Wait(double seconds)
         {
             var milisecondsDouble = seconds * 1000;
