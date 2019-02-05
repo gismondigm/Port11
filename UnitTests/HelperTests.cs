@@ -1,15 +1,13 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Port11.Models;
 using Port11.Utilities;
-using RestSharp;
 using System;
 using System.Linq;
-using System.Net;
 
 namespace UnitTests
 {
     [TestClass]
-    public class UnitTest1 : BaseUnitTest
+    public class HelperTests : BaseUnitTest
     {
         [ClassInitialize]
         public static void TestClassinitialize(TestContext context)
@@ -20,18 +18,6 @@ namespace UnitTests
         public void TearDown()
         {
             FinalizeTest(TestContext);
-        }
-        [TestCategory("Unit"), TestMethod]
-        public void StatusCode200Test()
-        {
-            var serviceRequest = new ServiceRequest
-            {
-                Url = "/todos/1",
-                Json = "",
-                Method = Method.GET
-            };
-            var sendRequest = RestClientAuthenticator.SendRequest(serviceRequest);
-            Verify.IsTrue(sendRequest.RestResponse.StatusCode == HttpStatusCode.OK, "Verify Status Code");
         }
         [TestCategory("Unit"), TestMethod]
         public void CurrentCpuUsageTest()
@@ -90,34 +76,6 @@ namespace UnitTests
             var tickEnd = Environment.TickCount;
             var testCaseTime = (tickEnd - tickStart) / 1000;
             Verify.IsTrue(Enumerable.Range(3, 8).Contains(testCaseTime), "Verify Test Case Time is Within Range");
-        }
-        [TestCategory("Unit"), TestMethod]
-        public void VerifyStringsAreEqualTest()
-        {
-            const string stringFromService = "test";
-            const string stringExpected = "test";
-            Verify.Strings.AreEqual(stringFromService, stringExpected, "Testing Strings Are Equal");
-        }
-        [TestCategory("Unit"), TestMethod]
-        public void VerifyStringsAreNotEqualTest()
-        {
-            const string stringFromService = "test";
-            const string stringExpected = "test2";
-            Verify.Strings.AreNotEqual(stringFromService, stringExpected, "Testing Strings Are NOT Equal");
-        }
-        [TestCategory("Unit"), TestMethod]
-        public void VerifyStringsArePartiallyEqualTest()
-        {
-            const string stringFromTest = "test";
-            const string stringExpected = "tes";
-            Verify.Strings.ArePartiallyEqual(stringFromTest, stringExpected, "Testing Strings Are Patially Equal");
-        }
-        [TestCategory("Unit"), TestMethod]
-        public void VerifyStringsArePartiallyEqualIgnoreCaseTest()
-        {
-            const string stringFromTest = "test";
-            const string stringExpected = "Tes";
-            Verify.Strings.ArePartiallyEqual(stringFromTest, stringExpected, "Testing Strings Are Patially Equal", ignoreCase: true);
         }
     }
 }

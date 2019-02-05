@@ -1,9 +1,9 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Port11.Enums;
+﻿using Port11.Enums;
 using Port11.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Port11.Utilities
 {
@@ -62,7 +62,6 @@ namespace Port11.Utilities
                     {
                         var errorMessage = new ErrorMessage("Test Aborted");
                         Log.Error(errorMessage);
-
                         testOutcome = TestOutcomes.Fail;
                         break;
                     }
@@ -79,6 +78,13 @@ namespace Port11.Utilities
                         break;
                     }
 
+                case UnitTestOutcome.NotRunnable:
+                {
+                    var errorMessage = new ErrorMessage("Test Not Runnable");
+                    Log.Error(errorMessage);
+                    testOutcome = TestOutcomes.Fail;
+                    break;
+                }
                 default:
                     {
                         try

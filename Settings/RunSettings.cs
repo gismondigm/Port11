@@ -2,6 +2,6 @@
 {
     public static class RunSettings
     {
-        public static string BaseUri = "https://jsonplaceholder.typicode.com";
+        public static string BaseUri = "https://httpstat.us/";
     }
 }
