@@ -369,6 +369,36 @@ namespace Port11.Utilities
                     }
                 }
             }
+            public static class Models
+            {
+                public static void AreEqual(dynamic modelFromService, dynamic modelFromExpected, string message)
+                {
+                    Log.Write(message);
+                    var string1 = JsonHelper.GetJsonFromModel(modelFromService);
+                    var string2 = JsonHelper.GetJsonFromModel(modelFromExpected);
+                    try
+                    {
+                        Strings.AreEqual(string1, string2, message, true);
+                    }
+                    catch (AssertFailedException ex)
+                    {
+                        Log.Write(ex.Message);
+                        var errorMessage = new ErrorMessage($"String values are not equal.\r\nActual Values:\r\nJson From Service: {string1} \r\nJson From Expected: {string2}");
+                        Log.Fail(message, errorMessage);
+                    }
+
+                    catch (ArgumentException ex)
+                    {
+                        Log.Write(ex.Message);
+                        var error = new ErrorMessage("One of the models is empty");
+                        Log.Fail(message, error);
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Warning(ex.Message);
+                    }
+                }
+            }
         }
     }
 }

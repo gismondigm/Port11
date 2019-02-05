@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Port11.Utilities;
 using System.Collections.Generic;
+using Port11.Models;
 
 namespace UnitTests
 {
@@ -58,6 +59,31 @@ namespace UnitTests
             var list1 = new List<string> { "Test1", "Test2" };
             var list2 = new List<string> { "Test1", "Test2" };
             Verify.List.AreEqual(list1, list2, "Testing Collections Are Equal");
+        }
+        [TestCategory("Unit"), TestMethod]
+        public void VerifyModelsTest()
+        {
+            var performanceInformationFromService = new PerformanceInformation
+            {
+                PerformanceMonitorSecond = 1,
+                RunTimeThreshold = 2,
+                ElapsedTimeTestCase = 3,
+                ExecutionTime = 4,
+                PerformanceMonitor = "PM",
+                Ram = "ram",
+                Cpu = "cpu"
+            };
+            var performanceInformation = new PerformanceInformation
+            {
+                PerformanceMonitorSecond = 1,
+                RunTimeThreshold = 2,
+                ElapsedTimeTestCase = 3,
+                ExecutionTime = 4,
+                PerformanceMonitor = "PM",
+                Ram = "ram",
+                Cpu = "cpu"
+            };
+            Verify.Models.AreEqual(performanceInformationFromService, performanceInformation, "Verify Models");
         }
     }
 }

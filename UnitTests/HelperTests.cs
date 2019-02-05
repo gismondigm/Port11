@@ -88,5 +88,21 @@ namespace UnitTests
         {
             //todo
         }
+        [TestCategory("Unit"), TestMethod]
+        public void JsonHelperTest()
+        {
+            var performanceInformation = new PerformanceInformation
+            {
+                PerformanceMonitorSecond = 1,
+                RunTimeThreshold = 2,
+                ElapsedTimeTestCase = 3,
+                ExecutionTime = 4,
+                PerformanceMonitor = "PM",
+                Ram = "ram",
+                Cpu = "cpu"
+            };
+            var jsonFromModel = JsonHelper.GetJsonFromModel(performanceInformation);
+            Verify.IsTrue(JsonHelper.IsValidJson(jsonFromModel), "Verify Is Valid Json");
+        }
     }
 }
