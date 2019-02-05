@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Port11", "Port11\Port11.csproj", "{5694DD37-E727-4F3F-A3F0-80DA5397E0F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Port11", "Port11\Port11.csproj", "{5694DD37-E727-4F3F-A3F0-80DA5397E0F8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\UnitTests.csproj", "{F5E63807-BB9A-429F-B28B-330FF65682AB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Settings", "Settings\Settings.csproj", "{FB25B370-43E7-4B04-9712-81D1354AD133}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{5694DD37-E727-4F3F-A3F0-80DA5397E0F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5694DD37-E727-4F3F-A3F0-80DA5397E0F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5694DD37-E727-4F3F-A3F0-80DA5397E0F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5E63807-BB9A-429F-B28B-330FF65682AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5E63807-BB9A-429F-B28B-330FF65682AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5E63807-BB9A-429F-B28B-330FF65682AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5E63807-BB9A-429F-B28B-330FF65682AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB25B370-43E7-4B04-9712-81D1354AD133}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB25B370-43E7-4B04-9712-81D1354AD133}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB25B370-43E7-4B04-9712-81D1354AD133}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB25B370-43E7-4B04-9712-81D1354AD133}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
