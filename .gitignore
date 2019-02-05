@@ -5,3 +5,5 @@
 /.vs
 /Port11/bin/
 /Port11/obj
+/UnitTests/bin
+/UnitTests/obj
