@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Port11", "Port11\Port11.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\UnitTests.csproj", "{F5E63807-BB9A-429F-B28B-330FF65682AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Settings", "Settings\Settings.csproj", "{FB25B370-43E7-4B04-9712-81D1354AD133}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Settings", "Settings\Settings.csproj", "{FB25B370-43E7-4B04-9712-81D1354AD133}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
