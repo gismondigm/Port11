@@ -1,4 +1,4 @@
-﻿namespace Port11.Utilities
+﻿namespace Port11.Models
 {
     public class ResponseHeader
     {

@@ -6,7 +6,7 @@ namespace Port11.Utilities
 {
     public class RestClientAuthenticator
     {
-        public Response SendRequest(ServiceRequest serviceRequest)
+        public static Response SendRequest(ServiceRequest serviceRequest)
         {
             var client = RestClientGet();
             var request = RequestHeadersSet(serviceRequest);
@@ -22,7 +22,7 @@ namespace Port11.Utilities
             return sendRequest;
         }
 
-        public RestRequest RequestHeadersSet(ServiceRequest serviceRequest)
+        public static RestRequest RequestHeadersSet(ServiceRequest serviceRequest)
         {
             var request = new RestRequest(serviceRequest.Url, serviceRequest.Method) {Timeout = 900000};
             foreach (var header in serviceRequest.ResponseHeaders)
@@ -31,12 +31,12 @@ namespace Port11.Utilities
             }
             return request;
         }
-        public RestClient RestClientGet(string token = "", string tokenAzure = "")
+        public static RestClient RestClientGet(string token = "", string tokenAzure = "")
         {
             return new RestClient
             {
                 //todo: get uri from settings
-                BaseUrl = new Uri("")
+                BaseUrl = new Uri("https://jsonplaceholder.typicode.com")
             };
         }
     }
