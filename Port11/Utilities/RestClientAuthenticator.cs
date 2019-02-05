@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using Port11.Models;
 using RestSharp;
 
@@ -31,12 +32,11 @@ namespace Port11.Utilities
             }
             return request;
         }
-        public static RestClient RestClientGet(string token = "", string tokenAzure = "")
+        public static RestClient RestClientGet()
         {
             return new RestClient
             {
-                //todo: get uri from settings
-                BaseUrl = new Uri("https://jsonplaceholder.typicode.com")
+                BaseUrl = new Uri(Settings.RunSettings.BaseUri)
             };
         }
     }
