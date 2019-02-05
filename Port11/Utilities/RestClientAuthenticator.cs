@@ -1,7 +1,6 @@
-﻿using System;
-using System.ComponentModel;
-using Port11.Models;
+﻿using Port11.Models;
 using RestSharp;
+using System;
 
 namespace Port11.Utilities
 {
@@ -25,7 +24,7 @@ namespace Port11.Utilities
 
         public static RestRequest RequestHeadersSet(ServiceRequest serviceRequest)
         {
-            var request = new RestRequest(serviceRequest.Url, serviceRequest.Method) {Timeout = 900000};
+            var request = new RestRequest(serviceRequest.Url, serviceRequest.Method) { Timeout = 900000 };
             foreach (var header in serviceRequest.ResponseHeaders)
             {
                 request.AddHeader(header.Name, header.Value);

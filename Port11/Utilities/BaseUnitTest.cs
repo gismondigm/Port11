@@ -1,9 +1,9 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Port11.Enums;
+﻿using Port11.Enums;
 using Port11.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Port11.Utilities
 {
@@ -62,7 +62,6 @@ namespace Port11.Utilities
                     {
                         var errorMessage = new ErrorMessage("Test Aborted");
                         Log.Error(errorMessage);
-
                         testOutcome = TestOutcomes.Fail;
                         break;
                     }
@@ -79,6 +78,13 @@ namespace Port11.Utilities
                         break;
                     }
 
+                case UnitTestOutcome.NotRunnable:
+                {
+                    var errorMessage = new ErrorMessage("Test Not Runnable");
+                    Log.Error(errorMessage);
+                    testOutcome = TestOutcomes.Fail;
+                    break;
+                }
                 default:
                     {
                         try
@@ -355,6 +361,36 @@ namespace Port11.Utilities
                     {
                         Log.Write(ex.Message);
                         var error = new ErrorMessage("One of the list is empty");
+                        Log.Fail(message, error);
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Warning(ex.Message);
+                    }
+                }
+            }
+            public static class Models
+            {
+                public static void AreEqual(dynamic modelFromService, dynamic modelFromExpected, string message)
+                {
+                    Log.Write(message);
+                    var string1 = JsonHelper.GetJsonFromModel(modelFromService);
+                    var string2 = JsonHelper.GetJsonFromModel(modelFromExpected);
+                    try
+                    {
+                        Strings.AreEqual(string1, string2, message, true);
+                    }
+                    catch (AssertFailedException ex)
+                    {
+                        Log.Write(ex.Message);
+                        var errorMessage = new ErrorMessage($"String values are not equal.\r\nActual Values:\r\nJson From Service: {string1} \r\nJson From Expected: {string2}");
+                        Log.Fail(message, errorMessage);
+                    }
+
+                    catch (ArgumentException ex)
+                    {
+                        Log.Write(ex.Message);
+                        var error = new ErrorMessage("One of the models is empty");
                         Log.Fail(message, error);
                     }
                     catch (Exception ex)
