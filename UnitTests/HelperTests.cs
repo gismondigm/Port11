@@ -69,13 +69,24 @@ namespace UnitTests
             Verify.IsFalse(isntNumeric, "Verify isnt Numeric");
         }
         [TestCategory("Unit"), TestMethod]
-        public void ThinkBetweenCallsTest()
+        public void WaitTest()
         {
             var tickStart = Environment.TickCount;
-            Helper.ThinkBetweenCalls();
+            Helper.Wait(2);
             var tickEnd = Environment.TickCount;
             var testCaseTime = (tickEnd - tickStart) / 1000;
-            Verify.IsTrue(Enumerable.Range(3, 8).Contains(testCaseTime), "Verify Test Case Time is Within Range");
+            Verify.IsTrue(Enumerable.Range(1, 3).Contains(testCaseTime), "Verify Test Case Time is Within Range");
+        }
+        [TestCategory("Unit"), TestMethod]
+        public void RandomNumberTest()
+        {
+            var number = Helper.GetRandomNumber(1, 10);
+            Verify.IsTrue(Enumerable.Range(1, 10).Contains(number), "Verify Random Number is Within Range");
+        }
+        [TestCategory("Unit"), TestMethod]
+        public void PropertyTest()
+        {
+            //todo
         }
     }
 }
