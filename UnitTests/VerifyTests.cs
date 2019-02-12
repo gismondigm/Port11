@@ -6,12 +6,12 @@ using Port11.Models;
 namespace UnitTests
 {
     [TestClass]
-    public class VerifyTests : BaseUnitTest
+    public class VerifyTests : BaseUtilitiesUnitTest
     {
         [ClassInitialize]
         public static void TestClassinitialize(TestContext context)
         {
-            SetSettings(context);
+            
         }
         [TestCleanup]
         public void TearDown()

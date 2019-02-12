@@ -10,16 +10,17 @@ namespace Port11.Models
         public string Json { get; set; }
         public Method Method { get; set; }
         public string TestName { get; set; }
-        public List<ResponseHeader> ResponseHeaders = SetDefaultResponseHeaders();
-        public bool ReturnAsJson { get; set; }
+        public List<Header> RequestHeaders = SetDefaultRequestHeaders();
+        public bool ReturnAsJson = true;
+        public string BaseUri { get; set; }
 
-        public static List<ResponseHeader> SetDefaultResponseHeaders()
+        public static List<Header> SetDefaultRequestHeaders()
         {
-           return new List<ResponseHeader>
-           {
-               new ResponseHeader { Name = "Content-Type", Value = "application/json" },
-               new ResponseHeader { Name = "Accept", Value = "application/json" },
-           };
+            return new List<Header>
+            {
+                new Header { Name = "Content-Type", Value = "application/json;charset=UTF-8" },
+                new Header { Name = "Accept", Value = "application/json, text/plain, */*" }
+            };
         }
     }
 }

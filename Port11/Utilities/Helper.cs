@@ -1,7 +1,8 @@
 ﻿using Microsoft.CSharp.RuntimeBinder;
-using System;
-using System.Threading;
 using Port11.Models;
+using System;
+using System.Text;
+using System.Threading;
 
 namespace Port11.Utilities
 {
@@ -59,6 +60,28 @@ namespace Port11.Utilities
             {
                 return false;
             }
+        }
+        public static string GetFormattedUrl(string url)
+        {
+            var formattedUrl = url.Replace("=&", "&");
+            if (formattedUrl.StartsWith("/"))
+            {
+                formattedUrl = formattedUrl.TrimStart('/');
+            }
+            return formattedUrl;
+        }
+        public static string EncodeTo64(string toEncode)
+        {
+            var toEncodeAsBytes = Encoding.ASCII.GetBytes(toEncode);
+            var returnValue = Convert.ToBase64String(toEncodeAsBytes);
+            return returnValue;
+        }
+        public static string GetAuthBase64TokenFromPersonalAccessToken(string personalAccessToken)
+        {
+            var value = Convert.ToBase64String(
+                Encoding.ASCII.GetBytes(
+                    $":{personalAccessToken}"));
+            return $"Basic {value}";
         }
     }
 }
