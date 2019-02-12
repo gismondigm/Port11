@@ -7,12 +7,11 @@ using System.Net;
 namespace UnitTests
 {
     [TestClass]
-    public class StatusCodeTests : BaseUnitTest
+    public class StatusCodeTests : BaseUtilitiesUnitTest
     {
         [ClassInitialize]
         public static void TestClassinitialize(TestContext context)
         {
-            SetSettings(context);
         }
         [TestCleanup]
         public void TearDown()
@@ -26,7 +25,8 @@ namespace UnitTests
             {
                 Url = "/200",
                 Json = "",
-                Method = Method.GET
+                Method = Method.GET,
+                BaseUri = "https://httpstat.us"
             };
             var sendRequest = RestClientAuthenticator.SendRequest(serviceRequest);
             Verify.IsTrue(sendRequest.RestResponse.StatusCode == HttpStatusCode.OK, "Verify 200 Status Code");
@@ -38,7 +38,8 @@ namespace UnitTests
             {
                 Url = "/400",
                 Json = "",
-                Method = Method.GET
+                Method = Method.GET,
+                BaseUri = "https://httpstat.us"
             };
             var sendRequest = RestClientAuthenticator.SendRequest(serviceRequest);
             Verify.IsTrue(sendRequest.RestResponse.StatusCode == HttpStatusCode.BadRequest, "Verify 400 Status Code");
@@ -50,7 +51,8 @@ namespace UnitTests
             {
                 Url = "/401",
                 Json = "",
-                Method = Method.GET
+                Method = Method.GET,
+                BaseUri = "https://httpstat.us"
             };
             var sendRequest = RestClientAuthenticator.SendRequest(serviceRequest);
             Verify.IsTrue(sendRequest.RestResponse.StatusCode == HttpStatusCode.Unauthorized, "Verify 401 Status Code");
@@ -62,7 +64,8 @@ namespace UnitTests
             {
                 Url = "/403",
                 Json = "",
-                Method = Method.GET
+                Method = Method.GET,
+                BaseUri = "https://httpstat.us"
             };
             var sendRequest = RestClientAuthenticator.SendRequest(serviceRequest);
             Verify.IsTrue(sendRequest.RestResponse.StatusCode == HttpStatusCode.Forbidden, "Verify 403 Status Code");
@@ -74,7 +77,8 @@ namespace UnitTests
             {
                 Url = "/404",
                 Json = "",
-                Method = Method.GET
+                Method = Method.GET,
+                BaseUri = "https://httpstat.us"
             };
             var sendRequest = RestClientAuthenticator.SendRequest(serviceRequest);
             Verify.IsTrue(sendRequest.RestResponse.StatusCode == HttpStatusCode.NotFound, "Verify 404 Status Code");
@@ -86,7 +90,8 @@ namespace UnitTests
             {
                 Url = "/405",
                 Json = "",
-                Method = Method.GET
+                Method = Method.GET,
+                BaseUri = "https://httpstat.us"
             };
             var sendRequest = RestClientAuthenticator.SendRequest(serviceRequest);
             Verify.IsTrue(sendRequest.RestResponse.StatusCode == HttpStatusCode.MethodNotAllowed, "Verify 405 Status Code");
@@ -98,7 +103,8 @@ namespace UnitTests
             {
                 Url = "/500",
                 Json = "",
-                Method = Method.GET
+                Method = Method.GET,
+                BaseUri = "https://httpstat.us"
             };
             var sendRequest = RestClientAuthenticator.SendRequest(serviceRequest);
             Verify.IsTrue(sendRequest.RestResponse.StatusCode == HttpStatusCode.InternalServerError, "Verify 500 Status Code");
@@ -110,7 +116,8 @@ namespace UnitTests
             {
                 Url = "/502",
                 Json = "",
-                Method = Method.GET
+                Method = Method.GET,
+                BaseUri = "https://httpstat.us"
             };
             var sendRequest = RestClientAuthenticator.SendRequest(serviceRequest);
             Verify.IsTrue(sendRequest.RestResponse.StatusCode == HttpStatusCode.BadGateway, "Verify 502 Status Code");
@@ -122,7 +129,8 @@ namespace UnitTests
             {
                 Url = "/503",
                 Json = "",
-                Method = Method.GET
+                Method = Method.GET,
+                BaseUri = "https://httpstat.us"
             };
             var sendRequest = RestClientAuthenticator.SendRequest(serviceRequest);
             Verify.IsTrue(sendRequest.RestResponse.StatusCode == HttpStatusCode.ServiceUnavailable, "Verify 503 Status Code");

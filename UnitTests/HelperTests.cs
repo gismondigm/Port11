@@ -1,18 +1,19 @@
+using System;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Port11.Models;
 using Port11.Utilities;
-using System;
-using System.Linq;
+using RestSharp;
+using System.Net;
 
 namespace UnitTests
 {
     [TestClass]
-    public class HelperTests : BaseUnitTest
+    public class HelperTests : BaseUtilitiesUnitTest
     {
         [ClassInitialize]
         public static void TestClassinitialize(TestContext context)
         {
-            SetSettings(context);
         }
         [TestCleanup]
         public void TearDown()
