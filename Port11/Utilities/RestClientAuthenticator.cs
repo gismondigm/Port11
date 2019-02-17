@@ -8,7 +8,7 @@ namespace Port11.Utilities
     {
         public static Response SendRequest(ServiceRequest serviceRequest)
         {
-            var client = RestClientGet();
+            var client = RestClientGet(serviceRequest);
             var request = RequestHeadersSet(serviceRequest);
             double tickStart = Environment.TickCount;
             var response = client.Execute(request);
@@ -25,17 +25,21 @@ namespace Port11.Utilities
         public static RestRequest RequestHeadersSet(ServiceRequest serviceRequest)
         {
             var request = new RestRequest(serviceRequest.Url, serviceRequest.Method) { Timeout = 900000 };
-            foreach (var header in serviceRequest.ResponseHeaders)
+            foreach (var header in serviceRequest.RequestHeaders)
             {
                 request.AddHeader(header.Name, header.Value);
             }
+            if (serviceRequest.Json != "")
+            {
+                request.AddParameter("application/json", serviceRequest.Json, ParameterType.RequestBody);
+            }
             return request;
         }
-        public static RestClient RestClientGet()
+        public static RestClient RestClientGet(ServiceRequest serviceRequest)
         {
             return new RestClient
             {
-                BaseUrl = new Uri(Settings.RunSettings.BaseUri)
+                BaseUrl = new Uri(serviceRequest.BaseUri)
             };
         }
     }
